@@ -33,6 +33,11 @@ class CreateProductsTable extends AbstractMigration
                     'limit' => 255,
                     'null' => false,
                 ]);
+                $table->addColumn('image', 'string', [
+                    'default' => null,
+                    'limit' => 255,
+                    'null' => false,
+                ]);
                 $table->addColumn('description', 'text', [
                     'default' => null,
                     'null' => false,
