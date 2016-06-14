@@ -13,7 +13,7 @@ class UsersController extends AppController
     public $name = 'Users';
     public $component = ['Pagination'];
     public $paginate = [
-        'limit'=>1
+        'limit'=>3
     ];
 
     /**
