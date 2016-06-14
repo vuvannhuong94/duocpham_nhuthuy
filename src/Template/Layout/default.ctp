@@ -25,6 +25,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
+    
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
@@ -46,6 +47,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
               
                  <li>  <?= $this->Html->link(__('Users'),['controller'=>'Users','action'=>'index']);?></li> 
                 <li> <?=  $this->Html->link(__('Products'),['controller'=>'products','action'=>'index']);?></li> 
+                 <li> <?=  $this->Html->link(__('News'),['controller'=>'news','action'=>'index']);?></li> 
                
                
             </ul>

@@ -15,6 +15,10 @@
             <td><?= h($product->name) ?></td>
         </tr>
         <tr>
+            <th><?= __('Image') ?></th>
+            <td><?= h($product->image) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($product->id) ?></td>
         </tr>
