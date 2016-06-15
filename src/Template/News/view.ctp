@@ -15,6 +15,10 @@
             <td><?= h($news->name) ?></td>
         </tr>
         <tr>
+            <th><?= __('Image') ?></th>
+            <td><?= h($news->image) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($news->id) ?></td>
         </tr>

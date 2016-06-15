@@ -10,6 +10,7 @@
         <legend><?= __('Add News') ?></legend>
         <?php
             echo $this->Form->input('name');
+            echo $this->Form->input('image');
             echo $this->Form->input('description');
         ?>
     </fieldset>

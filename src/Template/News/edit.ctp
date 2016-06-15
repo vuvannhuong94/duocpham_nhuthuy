@@ -16,6 +16,7 @@
         <legend><?= __('Edit News') ?></legend>
         <?php
             echo $this->Form->input('name');
+            echo $this->Form->input('image');
             echo $this->Form->input('description');
         ?>
     </fieldset>
