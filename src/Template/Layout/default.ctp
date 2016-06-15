@@ -48,6 +48,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                  <li>  <?= $this->Html->link(__('Users'),['controller'=>'Users','action'=>'index']);?></li> 
                 <li> <?=  $this->Html->link(__('Products'),['controller'=>'products','action'=>'index']);?></li> 
                  <li> <?=  $this->Html->link(__('News'),['controller'=>'news','action'=>'index']);?></li> 
+                
+                  <li> <?=  $this->Html->link(__('Answers'),['controller'=>'answers','action'=>'index']);?></li> 
+                  <li> <?=  $this->Html->link(__('Banners'),['controller'=>'banners','action'=>'index']);?></li> 
+                   <li> <?=  $this->Html->link(__('Footers'),['controller'=>'footers','action'=>'index']);?></li> 
                
                
             </ul>
