@@ -10,7 +10,7 @@ use App\Controller\AppController;
  */
 class ProductsController extends AppController
 {
-    public $name = 'Users';
+    public $name = 'Products';
     public $component = ['Pagination'];
     public $paginate = [
         'limit'=>3
