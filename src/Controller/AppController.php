@@ -54,8 +54,8 @@ class AppController extends Controller
                 ]
             ],
             'loginAction'=>[
-                'controller'=>'users',
-                'action'=>'login'
+                'controller'=>'frontends',
+                'action'=>'index'
             ]
         ]);
         
