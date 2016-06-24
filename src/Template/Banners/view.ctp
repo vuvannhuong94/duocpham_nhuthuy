@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th><?= __('Image') ?></th>
-            <td><?= h($banner->image) ?></td>
+            <td><?= $this->Html->image($banner->image) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>

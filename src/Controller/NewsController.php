@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -8,24 +9,24 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\NewsTable $News
  */
-class NewsController extends AppController
-{
+class NewsController extends AppController {
 
     public $name = "News";
-
     public $component = ['pagination'];
-
     public $paginate = [
-            'limit'=>3
+        'limit' => 3
     ];
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Upload');
+    }
 
     /**
      * Index method
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index() {
         $news = $this->paginate($this->News);
 
         $this->set(compact('news'));
@@ -39,8 +40,7 @@ class NewsController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
-    {
+    public function view($id = null) {
         $news = $this->News->get($id, [
             'contain' => []
         ]);
@@ -54,10 +54,12 @@ class NewsController extends AppController
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
+    public function add() {
         $news = $this->News->newEntity();
         if ($this->request->is('post')) {
+            
+             $this->Upload->send();
+
             $news = $this->News->patchEntity($news, $this->request->data);
             if ($this->News->save($news)) {
                 $this->Flash->success(__('The news has been saved.'));
@@ -77,12 +79,14 @@ class NewsController extends AppController
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
-    {
+    public function edit($id = null) {
         $news = $this->News->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+             $this->Upload->send();
+
             $news = $this->News->patchEntity($news, $this->request->data);
             if ($this->News->save($news)) {
                 $this->Flash->success(__('The news has been saved.'));
@@ -102,8 +106,7 @@ class NewsController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $news = $this->News->get($id);
         if ($this->News->delete($news)) {
@@ -113,4 +116,5 @@ class NewsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
 }

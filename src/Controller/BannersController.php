@@ -17,6 +17,11 @@ class BannersController extends AppController
     public $paginate = [
             'limit'=>3
     ];
+    
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Upload');
+    }
     /**
      * Index method
      *
@@ -56,6 +61,9 @@ class BannersController extends AppController
     {
         $banner = $this->Banners->newEntity();
         if ($this->request->is('post')) {
+            
+            $this->Upload->send();
+            
             $banner = $this->Banners->patchEntity($banner, $this->request->data);
             if ($this->Banners->save($banner)) {
                 $this->Flash->success(__('The banner has been saved.'));
@@ -81,6 +89,9 @@ class BannersController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $this->Upload->send();
+            
             $banner = $this->Banners->patchEntity($banner, $this->request->data);
             if ($this->Banners->save($banner)) {
                 $this->Flash->success(__('The banner has been saved.'));

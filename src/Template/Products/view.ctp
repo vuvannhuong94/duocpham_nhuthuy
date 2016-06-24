@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th><?= __('Image') ?></th>
-            <td><?= h($product->image) ?></td>
+            <td><?= $this->Html->image($product->image) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>

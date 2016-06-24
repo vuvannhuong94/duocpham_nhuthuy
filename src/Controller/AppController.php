@@ -45,6 +45,13 @@ class AppController extends Controller
         parent::initialize();
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadModel('Products');
+        $this->loadModel('Users');
+        $this->loadModel('Answers');
+        $this->loadModel('Footers');
+        $this->loadModel('News');
+        $this->loadModel('Settings');
+        $this->loadModel('Banners');
         $this->loadComponent('Auth', [
             'authenticate'=>[
                 'Form'=>[
@@ -54,13 +61,44 @@ class AppController extends Controller
                 ]
             ],
             'loginAction'=>[
-                'controller'=>'frontends',
-                'action'=>'index'
+                'controller'=>'users',
+                'action'=>'login'
             ]
         ]);
         
+        
+        $products = $this->Products->find()
+                ->limit(9)
+                ->order(['created' => 'desc']);
+        
+        $this->set(compact('product','products'));
            
+        $answers = $this->Answers->find()
+                ->limit(2)
+                ->order(['created' => 'ASC']);
+        $this->set(compact('answers'));
+        
+        
+        $footers = $this->Footers->find()
+                ->where(['name' => 'địa chỉ 3']);
+        $this->set(compact('footers'));
+        
+        $users = $this->Users->find()
+                ->where(['email' => 'admin@gmail.com']);
+        $this->set(compact('users'));
+        
+        $settings = $this->Settings->find('all');
+        $this->set(compact('settings'));
+        
+        $banners = $this->Banners->find('all');
+        $this->set(compact('banners'));
+        
+                
+
+        
     }
+     
+
 
     /**
      * Before render callback.

@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th><?= __('Image') ?></th>
-            <td><?= h($news->image) ?></td>
+            <td><?= $this->Html->image($news->image) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>

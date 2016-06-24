@@ -11,12 +11,13 @@
     </ul>
 </nav>
 <div class="banners form large-9 medium-8 columns content">
-    <?= $this->Form->create($banner) ?>
+    <?= $this->Form->create($banner,['type'=>'file']) ?>
     <fieldset>
         <legend><?= __('Edit Banner') ?></legend>
         <?php
+            echo $this->Html->image($banner->image);
             echo $this->Form->input('name');
-            echo $this->Form->input('image');
+            echo $this->Form->input('image',['type'=>'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

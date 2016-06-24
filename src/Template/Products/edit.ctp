@@ -11,13 +11,13 @@
     </ul>
 </nav>
 <div class="products form large-9 medium-8 columns content">
-    <?= $this->Form->create($product) ?>
+    <?= $this->Form->create($product,['type'=>'file']) ?>
     <fieldset>
         <legend><?= __('Edit Product') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('image');
-
+            echo $this->Html->image($product->image);
+            echo $this->Form->input('image',['type'=>'file']);
             echo $this->Form->input('description');
         ?>
     </fieldset>

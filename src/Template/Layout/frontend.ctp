@@ -11,15 +11,15 @@
 
 
 
-
+         <?= $this->Html->script('jquery-2.2.1.min') ?>
           <?= $this->Html->css('bootstrap.min.css') ?>
-
+          <?= $this->Html->css('style') ?>
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
         <!-- FlexSlider -->
 
-
+        <?= $this->Html->script('jssor.slider.mini.js') ?>
         <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
 
         <script>
@@ -162,30 +162,33 @@
             <div class="header">
                 <div class="row">
                     <div class="col-md-2">
-                        <img class="padding-left-20" src="assets\images\icon_logo.png"/>
+                <?php foreach ($settings as $setting): ?>
+                    <?= $this->Html->image($setting->image,['class'=>'padding-left-20']) ?>
+                <?php endforeach; ?>
                     </div>
                     <div class="col-md-5 margin-top-20">
                         <span class="color-035cae font-size-30">DƯỢC PHẨM NHƯ THỦY</span><br>
                         <span class="color-9cacba padding-left-170">Dược phẩm của mọi gia đình</span>
                     </div>
                     <div class="col-md-5 padding-left-100">
-                        <img class="padding-left-20" src="assets\images\icon_logo2.png"/>
+                        <?= $this->Html->image('icon_logo2.png',['class'=>'padding-left-20']);?> 
                     </div>
                     <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height:200px; overflow: hidden; visibility: hidden;">
                         <!-- Loading Screen -->
-                        
+<?php   foreach ($banners as $banner):                ?>
+                       
                         <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1250px; height: 200px; overflow: hidden;">
                             <div data-p="112.50" style="display: none;">
-                                <img data-u="image" src="assets\images\icon_logo3.png" />
+                            <?= $this->Html->image($banner->image,['data-u'=>'image'])?>    
                             </div>
                             <div data-p="112.50" style="display: none;">
-                                <img data-u="image" src="assets\images\icon_logo3_1.jpg" />
-                                
+                            <?= $this->Html->image($banner->image,['data-u'=>'image'])?>    
                             </div>
                             <div data-p="112.50" style="display: none;">
-                                <img data-u="image" src="assets\images\icon_logo3_2.jpg" />
+                            <?= $this->Html->image($banner->image,['data-u'=>'image'])?>    
                             </div>
                         </div>
+<?php endforeach;?>
                         <!-- Thumbnail Navigator -->
                         <div data-u="thumbnavigator" class="jssort09-600-45" style="position:absolute;bottom:0px;left:0px;width:600px;height:45px;">
                             <div style="position: absolute; top: 0; left: 0; width: 100%; height:100%; background-color: #000; filter:alpha(opacity=40.0); opacity:0.4;"></div>
@@ -214,7 +217,7 @@
                         <nav class="navbar row">
                             <div class="container-fluid">
                                 <ul class="nav navbar-nav ">
-                                    <li><a class="color-white margin-left-30" href="#">Trang chủ</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends']);?>">Trang chủ</a></li>
                                     <li><a class="color-white margin-left-30" href="#">Giới thiệu</a></li>
                                     <li><a class="color-white margin-left-30" href="#">Tin tức</a></li>
                                     <li><a class="color-white margin-left-30" href="#">Sản phẩm</a></li>
@@ -229,10 +232,10 @@
                     <div class="panel-body height-60 backgroup-color-d6e9fa width-1125">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="assets\images\icon_giohang.png"/><label class="color-blue">Giỏ hàng</label>
+                                <?= $this->Html->image('icon_giohang.png');?> <label class="color-blue"><?= (__('Giỏ Hàng'))?></label>
                             </div>
                             <div class="col-md-4">
-                                <label>Liên kết</label>
+                                <label><?= (__('Liên Kết'))?></label>
                                 <select class="selectpicker height-30 width-80">
                                     <option>-----</option>
                                     <option value="http://google.com.vn">http://google.com.vn</option>
@@ -243,7 +246,7 @@
                             <div class="col-md-6 padding-left-100">
                                 <form class="navbar-form navbar-left" role="search">
                                     <div class="form-group">
-                                        <label>Tìm kiếm </label>
+                                        <label><?= (__('Tìm Kiếm'))?></label>
                                         <input type="text" class="form-control height-30 " placeholder="Tìm kiếm">
                                     </div>
                                     <button type="submit" class="btn btn-danger height-30">tìm kiếm</button>
@@ -257,9 +260,51 @@
 
 
             <div class="content row">
+                <div class="col-md-3">
+                    <p class="color-blue border-bottom-2 font-size-17"><b><a href="<?= $this->Url->build(['controller'=>'frontends']);?>"><?= (__('CATEGORY'))?></a></b></p>
+    <?php foreach ($products as $product): ?>
+                    <table class=" table">
+                        <tr class="tr">
+                            <td>	<a href="<?= $this->Url->build('/frontends/view/'.$product->id) ?>">  <?= h($product->name) ?>   </a>  </td>
+                        </tr>
+                    </table>
+    <?php endforeach; ?>
+                    <p class="color-blue border-bottom-2 font-size-17"><a href=""><b><?= (__('HỖ TRỢ TRỰC TUYẾN'))?></b></a></p>
+                     <?= $this->Html->image('icon_online.png');?><a href=""><span class="padding-left-40">Hỗ trợ viên 1</span></a><br><br>
+                     <?= $this->Html->image('icon_notonline.png');?><a href=""><span class="padding-left-40">Hỗ trợ viên 2</span></a><br><br>
+                    <span class="color-rgba-tb">________________________________</span>
 
-                                 <?= $this->fetch('content') ?>
+    <?php foreach ($footers as $footer): ?>
 
+                    <h3> <?= $this->Html->image('icon_dt.png');?><span class="color-blue"><a href=""><?= h($footer->phone); ?></a></span>
+                    </h3>
+     <?php endforeach; ?>
+
+     <?php foreach ($users as $user): ?>
+                     <?= $this->Html->image('icon_gmail.png');?><a href=""><?= h($user->email);?></a>
+     <?php endforeach; ?>
+                    <br><br>
+
+                     <?= $this->Html->image('icon_hoidap.png');?>
+                    <br><br>	
+    <?php foreach ($answers as $answer): ?>
+
+                     <?= $this->Html->image('icon_hoi.png');?><a href=""><?= h($answer->name)?></a><br><br>
+                    <p><b><?= h($answer->answer)?></b></p>
+
+
+    <?php endforeach; ?>
+                </div>
+
+
+                <div class="col-md-9">
+
+                      <?= $this->fetch('content') ?>
+
+
+                   
+
+                </div>
             </div>
 
 
@@ -270,34 +315,35 @@
 
 
             <div class="footer">
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body backgroup-color-d6e9fa">
+                <div class="panel panel-default">
+                    <div class="panel-body backgroup-color-d6e9fa">
+ <?php foreach ($settings as $setting): ?>
+                    <h3><?= h($setting->name)?></h3>
+                    <p><?= h($setting->address)?></p>
+                        <p><?= h($setting->phone)?></p>
+<?php endforeach; ?>
+                    </div>
+                    <div class="panel-footer" style="background-color: #03a9f4;">
+                        <nav class="navbar  ">
+                            <ul class="nav navbar-nav">
+                                <li><a class="color-white margin-left-15" href="#">Power by HiWorld</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Trang chủ</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Giới thiệu</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Tin tức</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Sản phẩm</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Thông tin sức khỏe</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Tư vấn</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Hệ thống phân phối</a></li>
+                                <li><a class="color-white margin-left-15" href="#">Liên hệ</a></li>
+                            </ul>
+                        </nav>
 
 
-                    <h3>Công Ty Dược Phẩm Như Thủy</h3>
-                    <p>Địa chỉ:Số 4 ngõ 111,Nguyễn Phong Sắc,Cầu Giấy,Hà Nội</p>
-                    <p>DT:04 .38888888    Fax:04.38888888</p>
-
+                    </div>
                 </div>
-                <div class="panel-footer" style="background-color: #03a9f4;">
-                    <nav class="navbar  ">
-                        <ul class="nav navbar-nav">
-                            <li><a class="color-white margin-left-15" href="#">Power by HiWorld</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Trang chủ</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Giới thiệu</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Tin tức</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Sản phẩm</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Thông tin sức khỏe</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Tư vấn</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Hệ thống phân phối</a></li>
-                            <li><a class="color-white margin-left-15" href="#">Liên hệ</a></li>
-                        </ul>
-                    </nav>
 
-
-                </div>
             </div>
+
 
 
 

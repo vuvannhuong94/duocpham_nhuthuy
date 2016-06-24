@@ -11,12 +11,13 @@
     </ul>
 </nav>
 <div class="news form large-9 medium-8 columns content">
-    <?= $this->Form->create($news) ?>
+    <?= $this->Form->create($news,['type'=>'file']) ?>
     <fieldset>
         <legend><?= __('Edit News') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('image');
+            echo $this->Html->image($news->image);
+            echo $this->Form->input('image',['type'=>'file']);
             echo $this->Form->input('description');
         ?>
     </fieldset>
