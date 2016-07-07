@@ -10,10 +10,8 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class UsersController extends AppController
 {
-    public $name = 'Users';
-    public $component = ['Pagination'];
     public $paginate = [
-        'limit'=>3
+        'limit'=>6
     ];
 
     /**

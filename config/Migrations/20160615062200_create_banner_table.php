@@ -2,8 +2,8 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateBannerTable extends AbstractMigration
-{
+class CreateBannerTable extends AbstractMigration {
+
     /**
      * Change Method.
      *
@@ -25,27 +25,27 @@ class CreateBannerTable extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change()
-    {
-     $table = $this->table('banners');
-                                    $table->addColumn('name', 'string', [
-                                        'default' => null,
-                                        'limit' => 255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('image', 'string', [
-                                        'default' => null,
-                                        'limit'=>255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('created', 'datetime', [
-                                        'default' => null,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('modified', 'datetime', [
-                                        'default' => null,
-                                        'null' => false,
-                                    ]);
-                                    $table->create();
+    public function change() {
+        $table = $this->table('banners');
+        $table->addColumn('name', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('image', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('created', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->addColumn('modified', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->create();
     }
+
 }

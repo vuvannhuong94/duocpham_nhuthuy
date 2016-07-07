@@ -7,7 +7,6 @@
         <script type="text/javascript" src="assets/javascripts/lib/jquery-2.2.1.min.js"></script>
         <script type="text/javascript" src="assets/javascripts/lib/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 
 
 
@@ -218,13 +217,13 @@
                             <div class="container-fluid">
                                 <ul class="nav navbar-nav ">
                                     <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends']);?>">Trang chủ</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Giới thiệu</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Tin tức</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Sản phẩm</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Thông tin sức khỏe</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Tư vấn</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Hệ thống phân phối</a></li>
-                                    <li><a class="color-white margin-left-30" href="#">Liên hệ</a></li><br>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'introduction'])?>">Giới thiệu</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'news'])?>">Tin tức</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'product'])?>">Sản phẩm</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'healthInformation'])?>">Thông tin sức khỏe</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'advices'])?>">Tư vấn</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'distributionSystem'])?>">Hệ thống phân phối</a></li>
+                                    <li><a class="color-white margin-left-30" href="<?= $this->Url->build(['controller'=>'frontends','action'=>'connection'])?>">Liên hệ</a></li><br>
                                 </ul>
                             </div>
                         </nav>
@@ -232,7 +231,7 @@
                     <div class="panel-body height-60 backgroup-color-d6e9fa width-1125">
                         <div class="row">
                             <div class="col-md-2">
-                                <?= $this->Html->image('icon_giohang.png');?> <label class="color-blue"><?= (__('Giỏ Hàng'))?></label>
+                                <?= $this->Html->image('icon_giohang.png');?> <label class="color-blue"><?= $this->Html->link('Giỏ Hàng',['action'=>'viewCart'])?></label>
                             </div>
                             <div class="col-md-4">
                                 <label><?= (__('Liên Kết'))?></label>
@@ -244,13 +243,15 @@
                                 </select>
                             </div>
                             <div class="col-md-6 padding-left-100">
-                                <form class="navbar-form navbar-left" role="search">
+                     
+                                <form class="navbar-form navbar-left" role="search" action='/test/frontends/search' method="post">
                                     <div class="form-group">
-                                        <label><?= (__('Tìm Kiếm'))?></label>
-                                        <input type="text" class="form-control height-30 " placeholder="Tìm kiếm">
+                                        <label for='keyword'>Tìm kiếm </label>
+                                        <input type="text" name='keyword' id='keyword' class="form-control height-30 " placeholder="Tìm kiếm">
                                     </div>
                                     <button type="submit" class="btn btn-danger height-30">tìm kiếm</button>
                                 </form>
+                           
                             </div>
                         </div>
                     </div>
@@ -262,26 +263,30 @@
             <div class="content row">
                 <div class="col-md-3">
                     <p class="color-blue border-bottom-2 font-size-17"><b><a href="<?= $this->Url->build(['controller'=>'frontends']);?>"><?= (__('CATEGORY'))?></a></b></p>
-    <?php foreach ($products as $product): ?>
+    <?php foreach ($categories as $category): ?>
                     <table class=" table">
                         <tr class="tr">
-                            <td>	<a href="<?= $this->Url->build('/frontends/view/'.$product->id) ?>">  <?= h($product->name) ?>   </a>  </td>
+                            <td>	<a href="<?= $this->Url->build('/frontends/category/'.$category->id) ?>">  <?= h($category->name) ?>   </a>  </td>
                         </tr>
                     </table>
     <?php endforeach; ?>
                     <p class="color-blue border-bottom-2 font-size-17"><a href=""><b><?= (__('HỖ TRỢ TRỰC TUYẾN'))?></b></a></p>
-                     <?= $this->Html->image('icon_online.png');?><a href=""><span class="padding-left-40">Hỗ trợ viên 1</span></a><br><br>
-                     <?= $this->Html->image('icon_notonline.png');?><a href=""><span class="padding-left-40">Hỗ trợ viên 2</span></a><br><br>
+                    
+                    <?php foreach   ($supports as $sup):?>
+                    
+                     <?= $this->Html->image('icon_online.png');?><a href=""><span class="padding-left-40"><?= h($sup->value);?></span></a><br><br>
+                     <?php endforeach;?>
                     <span class="color-rgba-tb">________________________________</span>
 
-    <?php foreach ($footers as $footer): ?>
-
-                    <h3> <?= $this->Html->image('icon_dt.png');?><span class="color-blue"><a href=""><?= h($footer->phone); ?></a></span>
+    
+<?php foreach ($support as $sup): ?>
+                    <h3> <?= $this->Html->image('icon_dt.png');?>
+                        <span class="color-blue"><a href=""><?= h($sup->value); ?></a></span>
                     </h3>
      <?php endforeach; ?>
 
-     <?php foreach ($users as $user): ?>
-                     <?= $this->Html->image('icon_gmail.png');?><a href=""><?= h($user->email);?></a>
+     <?php foreach ($suppor as $sup): ?>
+                     <?= $this->Html->image('icon_gmail.png');?><a href=""><?= h($sup->value);?></a>
      <?php endforeach; ?>
                     <br><br>
 
@@ -289,14 +294,12 @@
                     <br><br>	
     <?php foreach ($answers as $answer): ?>
 
-                     <?= $this->Html->image('icon_hoi.png');?><a href=""><?= h($answer->name)?></a><br><br>
+                     <?= $this->Html->image('icon_hoi.png');?><a href="<?= $this->Url->build('/frontends/hoidap/'.$answer->id)?>"><?= h($answer->name)?></a><br><br>
                     <p><b><?= h($answer->answer)?></b></p>
 
 
     <?php endforeach; ?>
                 </div>
-
-
                 <div class="col-md-9">
 
                       <?= $this->fetch('content') ?>
@@ -306,13 +309,6 @@
 
                 </div>
             </div>
-
-
-
-
-
-
-
 
             <div class="footer">
                 <div class="panel panel-default">
@@ -343,15 +339,7 @@
                 </div>
 
             </div>
-
-
-
-
-
-
         </div>
-
-
     </body>
 </html>
 

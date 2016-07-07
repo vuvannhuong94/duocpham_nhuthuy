@@ -23,6 +23,18 @@
             <td><?= $this->Number->format($product->id) ?></td>
         </tr>
         <tr>
+            <th><?= __('Quantity') ?></th>
+            <td><?= $this->Number->format($product->quantity) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Price') ?></th>
+            <td><?= $this->Number->format($product->price) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Category_id') ?></th>
+            <td><?= $this->Number->format($product->category_id) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($product->created) ?></td>
         </tr>

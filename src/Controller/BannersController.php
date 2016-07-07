@@ -10,14 +10,9 @@ use App\Controller\AppController;
  */
 class BannersController extends AppController
 {
-    public $name = "Banners";
-
-    public $component = ['pagination'];
-
-    public $paginate = [
-            'limit'=>3
+     public $paginate = [
+        'limit'=>6
     ];
-    
     public function initialize() {
         parent::initialize();
         $this->loadComponent('Upload');

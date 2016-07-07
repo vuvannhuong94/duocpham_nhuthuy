@@ -11,6 +11,9 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('image',['type' => 'file']);
+            echo $this->Form->input('quantity');
+            echo $this->Form->input('price');
+            echo $this->Form->input('category_id',['type' => 'select', 'options' => $categories]);
             echo $this->Form->input('description');
         ?>
     </fieldset>

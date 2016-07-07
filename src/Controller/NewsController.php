@@ -11,11 +11,10 @@ use App\Controller\AppController;
  */
 class NewsController extends AppController {
 
-    public $name = "News";
-    public $component = ['pagination'];
-    public $paginate = [
-        'limit' => 3
+     public $paginate = [
+        'limit'=>6
     ];
+     
     public function initialize() {
         parent::initialize();
         $this->loadComponent('Upload');

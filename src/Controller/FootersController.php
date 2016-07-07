@@ -10,15 +10,9 @@ use App\Controller\AppController;
  */
 class FootersController extends AppController
 {
-    public $name = "Footers";
-
-    public $component = ['pagination'];
-
-    public $paginate = [
-            'limit'=>3
+     public $paginate = [
+        'limit'=>6
     ];
-
-
     /**
      * Index method
      *

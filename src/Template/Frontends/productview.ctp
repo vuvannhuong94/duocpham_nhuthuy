@@ -13,7 +13,3 @@
         <h4><?= __('Công dụng') ?></h4>
         <?= $this->Text->autoParagraph(h($product->description)); ?>
     </div>
-
-
-
-

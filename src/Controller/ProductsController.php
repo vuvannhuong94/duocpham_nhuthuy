@@ -12,15 +12,14 @@ use Cake\Utility\Text;
  */
 class ProductsController extends AppController {
 
-    public $name = 'Products';
-    public $component = ['Pagination'];
-    public $paginate = [
-        'limit' => 3
+ public $paginate = [
+        'limit'=>6
     ];
-
     public function initialize() {
         parent::initialize();
         $this->loadComponent("Upload");
+        $this->loadModel('Categories');
+        
     }
 
     /**
@@ -58,7 +57,10 @@ class ProductsController extends AppController {
      */
     public function add() {
         $product = $this->Products->newEntity();
-         
+        $categories = $this->Categories->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name']
+                );
         if ($this->request->is('post')) {
             
              $this->Upload->send();
@@ -73,7 +75,7 @@ class ProductsController extends AppController {
 
             
         }
-        $this->set(compact('product'));
+        $this->set(compact('product','categories'));
         $this->set('_serialize', ['product']);
     }
 
@@ -83,9 +85,13 @@ class ProductsController extends AppController {
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
+         $categories = $this->Categories->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name']
+                );
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $this->Upload->send();
-            
             $product = $this->Products->patchEntity($product, $this->request->data);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
@@ -94,7 +100,7 @@ class ProductsController extends AppController {
                 $this->Flash->error(__('The product could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('product'));
+        $this->set(compact('product','categories'));
         $this->set('_serialize', ['product']);
     }
 

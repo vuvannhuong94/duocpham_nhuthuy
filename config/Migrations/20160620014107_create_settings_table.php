@@ -28,34 +28,34 @@ class CreateSettingsTable extends AbstractMigration
     public function change()
     {
         $table = $this->table('settings');
-                                    $table->addColumn('name', 'string', [
-                                        'default' => null,
-                                        'limit' => 255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('image', 'string', [
-                                        'default' => null,
-                                        'limit'=>255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('address', 'string', [
-                                        'default' => null,
-                                        'limit' => 255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('phone', 'string', [
-                                        'default' => null,
-                                        'limit' => 255,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('created', 'datetime', [
-                                        'default' => null,
-                                        'null' => false,
-                                    ]);
-                                    $table->addColumn('modified', 'datetime', [
-                                        'default' => null,
-                                        'null' => false,
-                                    ]);
-                                    $table->create();
+        $table->addColumn('name', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('image', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('address', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('phone', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('created', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->addColumn('modified', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->create();
     }
 }

@@ -2,8 +2,8 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateNewsTable extends AbstractMigration
-{
+class CreateNewsTable extends AbstractMigration {
+
     /**
      * Change Method.
      *
@@ -25,26 +25,26 @@ class CreateNewsTable extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change()
-    {
+    public function change() {
         $table = $this->table('news');
-                        $table->addColumn('name', 'string', [
-                            'default' => null,
-                            'limit' => 255,
-                            'null' => false,
-                        ]);
-                        $table->addColumn('description', 'text', [
-                            'default' => null,
-                            'null' => false,
-                        ]);
-                        $table->addColumn('created', 'datetime', [
-                            'default' => null,
-                            'null' => false,
-                        ]);
-                        $table->addColumn('modified', 'datetime', [
-                            'default' => null,
-                            'null' => false,
-                        ]);
-                        $table->create();
+        $table->addColumn('name', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('description', 'text', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->addColumn('created', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->addColumn('modified', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->create();
     }
+
 }

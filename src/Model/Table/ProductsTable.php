@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Product;
@@ -11,8 +12,7 @@ use Cake\Validation\Validator;
  * Products Model
  *
  */
-class ProductsTable extends Table
-{
+class ProductsTable extends Table {
 
     /**
      * Initialize method
@@ -20,8 +20,7 @@ class ProductsTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->table('products');
@@ -29,6 +28,10 @@ class ProductsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->belongsTo('Categories', [
+            'className' => 'Categories',
+            'foreignKey' => 'category_id',
+        ]);
     }
 
     /**
@@ -37,24 +40,30 @@ class ProductsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
-    {
+    public function validationDefault(Validator $validator) {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
+        $validator
+                ->requirePresence('quantity', 'create')
+                ->notEmpty('quantity');
+        $validator
+                ->requirePresence('price', 'create')
+                ->notEmpty('price');
 
         $validator
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+                ->requirePresence('description', 'create')
+                ->notEmpty('description');
         $validator
-            ->requirePresence('image', 'create')
-            ->notEmpty('image');
+                ->requirePresence('image', 'create')
+                ->notEmpty('image');
 
 
         return $validator;
     }
+
 }

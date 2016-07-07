@@ -52,6 +52,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                   <li> <?=  $this->Html->link(__('Answers'),['controller'=>'answers','action'=>'index']);?></li> 
                   <li> <?=  $this->Html->link(__('Banners'),['controller'=>'banners','action'=>'index']);?></li> 
                    <li> <?=  $this->Html->link(__('Footers'),['controller'=>'footers','action'=>'index']);?></li> 
+                   <li> <?=  $this->Html->link(__('Distributions'),['controller'=>'distributions','action'=>'index']);?></li> 
+                   <li> <?=  $this->Html->link(__('Categories'),['controller'=>'categories','action'=>'index']);?></li> 
+                   <li> <?=  $this->Html->link(__('Connections'),['controller'=>'connections','action'=>'index']);?></li> 
+                   <li> <?=  $this->Html->link(__('Supports'),['controller'=>'supports','action'=>'index']);?></li> 
                    <li> <?=  $this->Html->link(__('Settings'),['controller'=>'settings','action'=>'index']);?></li> 
                
                

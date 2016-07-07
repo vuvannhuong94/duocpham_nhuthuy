@@ -152,5 +152,13 @@
 
 }
 
-
+.item{
+    background: #747576;
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    width: 264px;
+    margin: 0 15px 15px 0;
+    text-decoration: none;
+    
+}
 /*text*/

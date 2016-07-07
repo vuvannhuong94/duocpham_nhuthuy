@@ -12,6 +12,13 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
                 <th><?= $this->Paginator->sort('image') ?></th>
+
+                <th><?= $this->Paginator->sort('quantity') ?></th>
+
+                <th><?= $this->Paginator->sort('price') ?></th>
+
+                <th><?= $this->Paginator->sort('category') ?></th>
+
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -23,6 +30,9 @@
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->name) ?></td>
                 <td><?= $this->Html->image($product->image) ?></td>
+                <td><?= h($product->quantity) ?></td>
+                <td><?= h($product->price) ?></td>
+                <td><?= h($product->category_id) ?></td>
                 <td><?= h($product->created) ?></td>
                 <td><?= h($product->modified) ?></td>
                 <td class="actions">
